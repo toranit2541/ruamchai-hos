@@ -1,8 +1,15 @@
+import { motion } from 'motion/react';
 import React from 'react';
 
 const Contact: React.FC = () => {
   return (
     <section className="text-gray-600 body-font relative bg-linear-to-br from-blue-50 to-white px-5 py-24">
+      <motion.div
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="z-50 flex flex-col justify-center items-center"
+      >
       <h1 className="w-full text-4xl font-bold text-center mb-8 text-gray-600">Contact Us</h1>
       <div className="container px-5 mx-auto flex sm:flex-nowrap flex-wrap py-8 gap-10">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
@@ -63,6 +70,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { WobbleCard } from "../components/ui/wobble-card";
+import { motion } from 'motion/react';
 
 const Services: React.FC = () => {
   return (
     <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+      <motion.div
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="z-50 flex flex-col justify-center items-center"
+      >
       <div className="container mx-auto py-24 px-5 flex flex-col gap-12">
         <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">บริการของเรา</h1>
 
@@ -77,6 +84,7 @@ const Services: React.FC = () => {
           </WobbleCard>
         </div>
       </div>
+      </motion.div>
     </section>
   );
 };

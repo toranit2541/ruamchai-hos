@@ -125,7 +125,7 @@ const Home: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="z-50 flex flex-col justify-center items-center"
         >
           {/* <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-linear-to-b from-neutral-50 to-neutral-400 py-4">
@@ -140,7 +140,13 @@ const Home: React.FC = () => {
         </motion.div>
       </ImagesSlider>
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
-        <div className="container mx-auto py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container mx-auto py-16"
+        >
           <h2 className="text-3xl font-bold text-center mb-8">บริการของเรา</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6">
@@ -171,17 +177,23 @@ const Home: React.FC = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="text-gray-700 body-font bg-linear-to-br from-blue-50 to-white">
-        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
+        >
 
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2 }}
             viewport={{ once: true }}
             className="lg:grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col justify-center md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
           >
@@ -227,7 +239,7 @@ const Home: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2 }}
             viewport={{ once: true }}
             className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"
           >
@@ -240,14 +252,24 @@ const Home: React.FC = () => {
               <div className="absolute inset-0 bg-linear-to-t from-blue-900/10 to-transparent rounded-3xl"></div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Blog Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
 
-        <div className="container px-5 py-24 mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container px-5 py-24 mx-auto"
+        >
           <h1 className="text-3xl font-bold text-center my-12">New Promotions</h1>
+          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+            Stay updated with the latest health news, tips, and articles from our
+            experts.
+          </h2>
           <div className="flex flex-wrap -m-4 py-8">
             {[
               { img: "https://dummyimage.com/720x400", title: "The Catalyzer" },
@@ -323,48 +345,75 @@ const Home: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Doctor Section */}
-      <div className="bg-gray-100 py-16 bg-linear-to-br from-blue-50 to-white">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Medical Specialists
-        </h1>
-        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-          ทีมแพทย์ผู้เชี่ยวชาญของเรา พร้อมให้บริการดูแลสุขภาพคุณอย่างเต็มที่
-        </h2>
-        <div className="container mx-auto">
-          <AnimatedTestimonials testimonials={testimonials2} />
-        </div>
-      </div>
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="bg-gray-100 py-16 bg-linear-to-br from-blue-50 to-white"
+        >
+          <h1 className="text-3xl font-bold text-center mb-8">
+            Medical Specialists
+          </h1>
+          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+            ทีมแพทย์ผู้เชี่ยวชาญของเรา พร้อมให้บริการดูแลสุขภาพคุณอย่างเต็มที่
+          </h2>
+          <div className="container mx-auto">
+            <AnimatedTestimonials testimonials={testimonials2} />
+          </div>
+        </motion.div>
+      </section>
+
       {/* Service Rooms Section */}
-      <div className="relative overflow-hidden w-full h-full py-20 bg-linear-to-br from-blue-50 to-white">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          บริการห้องพักพยาบาล
-        </h1>
-        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-          เรามีห้องพักพยาบาลหลากหลายประเภท เพื่อตอบสนองความต้องการของผู้ป่วย
-          ทั้งในด้านความสะดวกสบายและการดูแลสุขภาพ
-        </h2>
-        <div className="py-20">
-          <Carousel slides={slideData} />
-        </div>
-      </div>
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden w-full h-full py-20 bg-linear-to-br from-blue-50 to-white"
+        >
+          <h1 className="text-3xl font-bold text-center mb-8">
+            บริการห้องพักพยาบาล
+          </h1>
+          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+            เรามีห้องพักพยาบาลหลากหลายประเภท เพื่อตอบสนองความต้องการของผู้ป่วย
+            ทั้งในด้านความสะดวกสบายและการดูแลสุขภาพ
+          </h2>
+          <div className="py-20">
+            <Carousel slides={slideData} />
+          </div>
+        </motion.div>
+      </section>
+
       {/* News and Article Section */}
-      <div className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-50 to-white">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          News & Articles
-        </h1>
-        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-          Stay updated with the latest health news, tips, and articles from our
-          experts.
-        </h2>
-        <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
-      </div>
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-50 to-white"
+        >
+          <h1 className="text-3xl font-bold text-center mb-8">
+            News & Articles
+          </h1>
+          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+            Stay updated with the latest health news, tips, and articles from our
+            experts.
+          </h2>
+          <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+        </motion.div>
+      </section>
+
 
       <section className="text-gray-600 body-font relative bg-linear-to-br from-blue-50 to-white">
-        
+
         <div className="absolute inset-0 bg-gray-300">
           <iframe
             width="100%"
@@ -384,10 +433,16 @@ const Home: React.FC = () => {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-        <div className="container px-5 py-24 mx-auto flex">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container px-5 py-24 mx-auto flex"
+        >
           <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
             <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-              ประเมินเรา
+              ส่งความคิดเห็นของคุณถึงเรา
             </h2>
 
 
@@ -418,16 +473,16 @@ const Home: React.FC = () => {
               ></textarea>
             </div>
 
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none 
-                         hover:bg-indigo-600 rounded text-lg">
+            <button className="text-white bg-indigo-100 border-0 py-2 px-6 focus:outline-none 
+                         hover:bg-indigo-200 rounded text-lg">
               ส่งผลการประเมิน
             </button>
 
-            <p className="text-xs text-gray-500 mt-3">
+            <p className="text-xs text-gray-500 mt-3 py-4">
               ทุกความเห็นของทุกคนคือแรงพักดันให้เรา
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
     </div>

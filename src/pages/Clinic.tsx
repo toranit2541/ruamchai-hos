@@ -6,6 +6,7 @@ import {
     IconActivity,
     IconPhoto,
 } from "@tabler/icons-react";
+import { motion } from "motion/react";
 
 const content = [
     {
@@ -44,6 +45,12 @@ const content = [
 export default function DepartmentSection() {
     return (
         <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+            <motion.div
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="z-50 flex flex-col justify-center items-center"
+      >
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
                     <h1 className="text-3xl font-semibold mb-2 text-gray-900">
@@ -82,6 +89,7 @@ export default function DepartmentSection() {
                 </div>
 
             </div>
+            </motion.div>
         </section>
     );
 }

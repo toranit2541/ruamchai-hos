@@ -41,6 +41,12 @@ const fadeInUp = {
 const Package: React.FC = () => {
   return (
     <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+      <motion.div
+              initial={{ opacity: 0, y: -80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="z-50 flex flex-col justify-center items-center"
+            >
       <div className="container px-5 py-24 mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">Promotion And Package</h1>
         <p className="text-center text-gray-500 mb-12">
@@ -71,6 +77,7 @@ const Package: React.FC = () => {
           ))}
         </div>
       </div>
+      </motion.div>
     </section>
   );
 };
