@@ -41,7 +41,7 @@ const navItems = [
 
 const Navbar: React.FC = () => {
   return (
-    <div className="relative  w-full">
+    <div className="relative w-full bg-blue-50">
       <FloatingNav navItems={navItems} />
     </div>
   );

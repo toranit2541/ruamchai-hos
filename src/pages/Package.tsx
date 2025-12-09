@@ -40,9 +40,13 @@ const fadeInUp = {
 
 const Package: React.FC = () => {
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap justify-center gap-6">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">Promotion And Package</h1>
+        <p className="text-center text-gray-500 mb-12">
+          บริการด้านสุขภาพ และ สิทธิพิเศษสำหรับคุณ จากทางโรงพยาบาล
+        </p>
+        <div className="flex flex-wrap justify-center gap-6 py-12">
           {mockData.map((item) => (
             <motion.div
               key={item.id}

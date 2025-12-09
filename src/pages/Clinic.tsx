@@ -1,4 +1,3 @@
-import React from "react";
 import {
     IconEye,
     IconUsers,
@@ -44,7 +43,7 @@ const content = [
 
 export default function DepartmentSection() {
     return (
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
                     <h1 className="text-3xl font-semibold mb-2 text-gray-900">
@@ -76,10 +75,12 @@ export default function DepartmentSection() {
                         </div>
                     ))}
                 </div>
+                <div className="flex justify-center py-8">
+                    <button className="flex mx-auto mt-16 text-white bg-indigo-100 px-8 py-4 rounded-lg hover:bg-indigo-200 text-lg font-medium transition">
+                        ดูทั้งหมด
+                    </button>
+                </div>
 
-                <button className="flex mx-auto mt-16 text-white bg-indigo-600 px-8 py-2 rounded-lg hover:bg-indigo-700">
-                    ดูทั้งหมด
-                </button>
             </div>
         </section>
     );

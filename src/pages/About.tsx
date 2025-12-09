@@ -2,8 +2,10 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
       <div className="container px-5 py-24 mx-auto flex flex-col">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">About Us</h1>
+        
         <div className="lg:w-4/6 mx-auto">
           <div className="rounded-lg h-64 overflow-hidden"> 
             <img alt="content" className="object-cover object-center h-full w-full" src="https://dummyimage.com/1200x500" />

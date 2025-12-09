@@ -52,9 +52,18 @@ const content = [
 
 const Doctors: React.FC = () => {
     return (
-        <div className="w-full py-12">
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+        <div className="container px-5 py-24 mx-auto">
+          <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">Medical Specialist</h1>
+          <p className="text-center text-gray-500 mb-12">
+            ค้นหาแพทย์ผู้เชี่ยวชาญตามสาขาและความต้องการของคุณ
+          </p>
+          <div className="w-full py-4 px-5 mx-auto max-w-7xl">
             <StickyScroll content={content} />
         </div>
+        </div>
+        
+      </section>
     );
 };
 

@@ -9,9 +9,9 @@ function Layout() {
   const isAdminPage = location.pathname.startsWith("/admin");
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
       {!isAuthPage && !isAdminPage && <Navbar />}
-      <main className={!isAuthPage && !isAdminPage ? "mt-16" : ""}>
+      <main>
         <AppRoutes />
       </main>
       {!isAuthPage && !isAdminPage && <Footer />}

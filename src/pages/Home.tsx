@@ -62,7 +62,7 @@ const testimonials2 = [
     quote:
       "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
     name: "Sarah Chen",
-    designation: "Product Manager at TechFlow", 
+    designation: "Product Manager at TechFlow",
     src: mo1,
   },
   {
@@ -132,120 +132,123 @@ const Home: React.FC = () => {
             โรงพยาบาลรวมชัยประชารักษ์ <br /> บริการทุกระดับ ประทับใจ
           </motion.p> */}
           <Link to="/login">
-          <button className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-96">
-            <span>Join Now →</span>
-            <div className="absolute inset-x-0 h-px -bottom-px bg-linear-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent" />
-          </button>
-        </Link>
+            <button className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-96">
+              <span>Join Now →</span>
+              <div className="absolute inset-x-0 h-px -bottom-px bg-linear-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent" />
+            </button>
+          </Link>
         </motion.div>
       </ImagesSlider>
-
-      <div className="container mx-auto py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">บริการของเรา</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-2">แพ็คเกจ และ โปรโมชั่น</h3>
-            <p className="text-gray-700 mb-4">
-              เรามีบริการทางด้านสุขภาพ และ สิทธิพิเศษสำหรับคุณ จากทางโรงพยาบาลมากมาย
-            </p>
-            <Link to="/package" className="text-blue-500 hover:text-blue-700 font-semibold">
-              Learn More
-            </Link>
-          </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-2">ห้องพักพยาบาล</h3>
-            <p className="text-gray-700 mb-4">
-              หากคุณได้รับการรักษาและมีความประสงค์ที่จะพักฟืนที่โรงพยาบาล ทางเราก็มีห้องสุดพิเศษสำหรับคุณพร้อมบริการ
-            </p>
-            <Link to="/rooms" className="text-blue-500 hover:text-blue-700 font-semibold">
-              Learn More
-            </Link>
-          </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-2">คลีนิกเฉพาะด้าน</h3>
-            <p className="text-gray-700 mb-4">
-              คลีนิกเฉพาะด้าน สำหรับผู้ที่ต้องการดูแลสุขภาพเฉพาะด้าน
-            </p>
-            <Link to="/clinic" className="text-blue-500 hover:text-blue-700 font-semibold">
-              Learn More
-            </Link>
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+        <div className="container mx-auto py-16">
+          <h2 className="text-3xl font-bold text-center mb-8">บริการของเรา</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-bold mb-2">แพ็คเกจ และ โปรโมชั่น</h3>
+              <p className="text-gray-700 mb-4">
+                เรามีบริการทางด้านสุขภาพ และ สิทธิพิเศษสำหรับคุณ จากทางโรงพยาบาลมากมาย
+              </p>
+              <Link to="/package" className="text-blue-500 hover:text-blue-700 font-semibold">
+                Learn More
+              </Link>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-bold mb-2">ห้องพักพยาบาล</h3>
+              <p className="text-gray-700 mb-4">
+                หากคุณได้รับการรักษาและมีความประสงค์ที่จะพักฟืนที่โรงพยาบาล ทางเราก็มีห้องสุดพิเศษสำหรับคุณพร้อมบริการ
+              </p>
+              <Link to="/rooms" className="text-blue-500 hover:text-blue-700 font-semibold">
+                Learn More
+              </Link>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-bold mb-2">คลีนิกเฉพาะด้าน</h3>
+              <p className="text-gray-700 mb-4">
+                คลีนิกเฉพาะด้าน สำหรับผู้ที่ต้องการดูแลสุขภาพเฉพาะด้าน
+              </p>
+              <Link to="/clinic" className="text-blue-500 hover:text-blue-700 font-semibold">
+                Learn More
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <section className="text-gray-700 body-font bg-linear-to-br from-blue-50 to-white">
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        
-        {/* LEFT CONTENT */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="lg:grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col justify-center md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
-        >
-          <h1 className="title-font sm:text-5xl text-3xl mb-6 font-extrabold text-gray-900 leading-tight">
-            โรงพยาบาลรวมชัยประชารักษ์
-            <br className="hidden lg:inline-block" />
-            <span className="text-blue-600 text-2xl md:text-3xl font-semibold">
-              Ruamchai Pracharug Hospital
-            </span>
-          </h1>
+        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
 
-          <p className="mb-8 leading-relaxed text-gray-600 max-w-xl">
-            โรงพยาบาลรวมชัยประชารักษ์ (Ruamchai Pracharug Company Limited) 
-            เป็นโรงพยาบาลเอกชนขนาด 100 เตียง ตั้งอยู่ในจังหวัดสมุทรปราการ 
-            เปิดให้บริการทางการแพทย์ตั้งแต่ปี พ.ศ. 2542
-          </p>
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col justify-center md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
+          >
+            <h1 className="title-font sm:text-5xl text-3xl mb-6 font-extrabold text-gray-900 leading-tight">
+              โรงพยาบาลรวมชัยประชารักษ์
+              <br className="hidden lg:inline-block" />
+              <span className="text-blue-600 text-2xl md:text-3xl font-semibold">
+                Ruamchai Pracharug Hospital
+              </span>
+            </h1>
 
-          {/* VALUE LIST */}
-          <div className="grid grid-cols-2 gap-4 text-gray-700 w-full md:w-auto">
-            <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
-              <FaHandsHelping className="text-blue-600 text-xl" />
-              <p className="font-medium">ดูแลใกล้ชิด</p>
+            <p className="mb-8 leading-relaxed text-gray-600 max-w-xl">
+              โรงพยาบาลรวมชัยประชารักษ์ (Ruamchai Pracharug Company Limited)
+              เป็นโรงพยาบาลเอกชนขนาด 100 เตียง ตั้งอยู่ในจังหวัดสมุทรปราการ
+              เปิดให้บริการทางการแพทย์ตั้งแต่ปี พ.ศ. 2542
+            </p>
+
+            {/* VALUE LIST */}
+            <div className="grid grid-cols-2 gap-4 text-gray-700 w-full md:w-auto">
+              <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
+                <FaHandsHelping className="text-blue-600 text-xl" />
+                <p className="font-medium">ดูแลใกล้ชิด</p>
+              </div>
+
+              <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
+                <FaHeart className="text-pink-500 text-xl" />
+                <p className="font-medium">ดุจญาติมิตรในครัวเรือน</p>
+              </div>
+
+              <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
+                <FaUserMd className="text-green-600 text-xl" />
+                <p className="font-medium">รักษาดีมีคุณธรรม</p>
+              </div>
+
+              <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
+                <FaHospitalAlt className="text-indigo-500 text-xl" />
+                <p className="font-medium">เลิศล้ำด้วยคุณภาพและบริการ</p>
+              </div>
             </div>
+          </motion.div>
 
-            <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
-              <FaHeart className="text-pink-500 text-xl" />
-              <p className="font-medium">ดุจญาติมิตรในครัวเรือน</p>
+          {/* RIGHT IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"
+          >
+            <div className="relative">
+              <img
+                className="object-cover object-center rounded-3xl shadow-lg"
+                alt="Ruamchai Hospital"
+                src={imageruamchai}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-blue-900/10 to-transparent rounded-3xl"></div>
             </div>
-
-            <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
-              <FaUserMd className="text-green-600 text-xl" />
-              <p className="font-medium">รักษาดีมีคุณธรรม</p>
-            </div>
-
-            <div className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg shadow-sm hover:bg-blue-100 transition">
-              <FaHospitalAlt className="text-indigo-500 text-xl" />
-              <p className="font-medium">เลิศล้ำด้วยคุณภาพและบริการ</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* RIGHT IMAGE */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"
-        >
-          <div className="relative">
-            <img
-              className="object-cover object-center rounded-3xl shadow-lg"
-              alt="Ruamchai Hospital"
-              src={ imageruamchai }
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-blue-900/10 to-transparent rounded-3xl"></div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Blog Section */}
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
+
         <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
+          <h1 className="text-3xl font-bold text-center my-12">New Promotions</h1>
+          <div className="flex flex-wrap -m-4 py-8">
             {[
               { img: "https://dummyimage.com/720x400", title: "The Catalyzer" },
               { img: "https://dummyimage.com/721x401", title: "The 400 Blows" },
@@ -323,21 +326,45 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <div className="bg-gray-100 py-16">
+      {/* Doctor Section */}
+      <div className="bg-gray-100 py-16 bg-linear-to-br from-blue-50 to-white">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          Medical Specialists
+        </h1>
+        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+          ทีมแพทย์ผู้เชี่ยวชาญของเรา พร้อมให้บริการดูแลสุขภาพคุณอย่างเต็มที่
+        </h2>
         <div className="container mx-auto">
           <AnimatedTestimonials testimonials={testimonials2} />
         </div>
       </div>
-
-      <div className="relative overflow-hidden w-full h-full py-20">
-        <Carousel slides={slideData} />
+      {/* Service Rooms Section */}
+      <div className="relative overflow-hidden w-full h-full py-20 bg-linear-to-br from-blue-50 to-white">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          บริการห้องพักพยาบาล
+        </h1>
+        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+          เรามีห้องพักพยาบาลหลากหลายประเภท เพื่อตอบสนองความต้องการของผู้ป่วย
+          ทั้งในด้านความสะดวกสบายและการดูแลสุขภาพ
+        </h2>
+        <div className="py-20">
+          <Carousel slides={slideData} />
+        </div>
       </div>
-
-      <div className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      {/* News and Article Section */}
+      <div className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-50 to-white">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          News & Articles
+        </h1>
+        <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+          Stay updated with the latest health news, tips, and articles from our
+          experts.
+        </h2>
         <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
       </div>
 
-      <section className="text-gray-600 body-font relative">
+      <section className="text-gray-600 body-font relative bg-linear-to-br from-blue-50 to-white">
+        
         <div className="absolute inset-0 bg-gray-300">
           <iframe
             width="100%"
@@ -362,7 +389,7 @@ const Home: React.FC = () => {
             <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
               ประเมินเรา
             </h2>
-            
+
 
             <div className="relative mb-4">
               <label htmlFor="email" className="leading-7 text-sm text-gray-600">
