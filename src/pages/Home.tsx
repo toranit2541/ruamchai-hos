@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import 'swiper/css';
@@ -11,117 +12,78 @@ import { AnimatedTestimonials } from "../components/ui/animated-testimonials";
 import { ImagesSlider } from "../components/ui/images-slider";
 import { FaHandsHelping, FaHeart, FaUserMd, FaHospitalAlt } from 'react-icons/fa';
 import { motion } from 'motion/react';
-
+import { stripHtml } from '@/lib/utils'
 import imageruamchai from "../assets/ruamchai.webp";
-import mo1 from "../assets/mo1.png";
-import mo2 from "../assets/mo2.png";
-import mo3 from "../assets/mo3.png";
-import mo4 from "../assets/mo4.png";
-
-import rch1 from "../assets/rch1.png";
-import rch2 from "../assets/rch2.png";
-import rch3 from "../assets/rch3.png";
-import rch4 from "../assets/rch4.png";
-import rch5 from "../assets/rch5.png";
+import { getDoctors, getPackages, getBannerImages, getNews, getRooms, getArticleDoctors } from '../api/api';
 
 
 
-const slideData = [
-  {
-    title: "Mystic Mountains",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Urban Dreams",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Neon Nights",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1590041794748-2d8eb73a571c?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1679420437432-80cfbf88986c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-
-const images = [
-  rch1,
-  rch2,
-  rch3,
-  rch4,
-  rch5
-];
-
-const testimonials2 = [
-  {
-    quote:
-      "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-    name: "Sarah Chen",
-    designation: "Product Manager at TechFlow",
-    src: mo1,
-  },
-  {
-    quote:
-      "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-    name: "Michael Rodriguez",
-    designation: "CTO at InnovateSphere",
-    src: mo2,
-  },
-  {
-    quote:
-      "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-    name: "Emily Watson",
-    designation: "Operations Director at CloudScale",
-    src: mo3,
-  },
-  {
-    quote:
-      "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-    name: "James Kim",
-    designation: "Engineering Lead at DataPro",
-    src: mo4,
-  }
-];
-
-const testimonials = [
-  {
-    image: "https://dummyimage.com/720x400",
-    category: "CATEGORY",
-    title: "The Catalyzer",
-    description:
-      "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
-    views: "1.2K",
-    comments: "6",
-  },
-  {
-    image: "https://dummyimage.com/721x401",
-    category: "CATEGORY",
-    title: "The 400 Blows",
-    description:
-      "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
-    views: "980",
-    comments: "4",
-  },
-  {
-    image: "https://dummyimage.com/722x402",
-    category: "CATEGORY",
-    title: "Shooting Stars",
-    description:
-      "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
-    views: "1.5K",
-    comments: "8",
-  },
-];
 
 const Home: React.FC = () => {
+  const [doctors, setDoctors] = useState<any[]>([]);
+  const [packages, setPackages] = useState<any[]>([]);
+  const [banners, setBanners] = useState<any[]>([]);
+  // const [news, setNews] = useState<any[]>([]);
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [articlesdoctors, setArticlesDoctors] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const doctorsData = await getDoctors();
+        setDoctors(doctorsData);
+
+        const packagesData = await getPackages();
+        setPackages(packagesData);
+
+        const bannersData = await getBannerImages();
+        setBanners(bannersData);
+
+        // const newsData = await getNews();
+        // setNews(newsData);
+
+        const roomsData = await getRooms();
+        setRooms(roomsData);
+
+        const articlesDoctorsData = await getArticleDoctors();
+        setArticlesDoctors(articlesDoctorsData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const images = banners.map(banner => ({
+    src: `http://localhost:8080/admin/upload_image/website/baner/${banner.baner_Photo}`,
+  }));
+
+  const articleCardItems = articlesdoctors.map((item) => ({
+    image: `http://localhost:8080/admin/upload_image/website/blog/${item.article_Photo}`,
+    category: item.article_keyword || "Article",
+    title: item.article_title,
+    description: stripHtml(item.article_details),
+    views: "1.2K",       // optional (static or from API later)
+    comments: "6",       // optional
+  }));
+
+  const doctorTestimonials = doctors.map((doctor) => ({
+    quote: stripHtml(doctor.doctor_education) || "พร้อมให้บริการดูแลสุขภาพคุณอย่างเต็มที่",
+    name: `${doctor.doctor_titlename}${doctor.doctor_Name} ${doctor.doctor_lastname}`,
+    designation: `${doctor.doctor_major} (${doctor.doctor_profession})`,
+    src: `http://localhost:8080/admin/upload_image/website/doctor/${doctor.doctor_Photo}`,
+  }));
+
+  const roomSlides = rooms.map((room) => ({
+    title: `${room.room_name} (${room.room_keyword})`,
+    button: `฿${Number(room.price).toLocaleString()} / คืน`,
+    src: `http://localhost:8080/admin/upload_image/website/room/${room.room_photo}`,
+  }));
+
   return (
     <div>
-      <ImagesSlider className="h-220 w-full relative z-0" images={images}>
+      <ImagesSlider className="h-screen w-full relative z-0" images={images}>
         <motion.div
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,8 +91,8 @@ const Home: React.FC = () => {
           className="z-50 flex flex-col justify-center items-center"
         >
           {/* <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-linear-to-b from-neutral-50 to-neutral-400 py-4">
-            โรงพยาบาลรวมชัยประชารักษ์ <br /> บริการทุกระดับ ประทับใจ
-          </motion.p> */}
+                  โรงพยาบาลรวมชัยประชารักษ์ <br /> บริการทุกระดับ ประทับใจ
+                </motion.p> */}
           <Link to="/login">
             <button className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-96">
               <span>Join Now →</span>
@@ -139,6 +101,8 @@ const Home: React.FC = () => {
           </Link>
         </motion.div>
       </ImagesSlider>
+
+      {/* Services Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -180,6 +144,7 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Hero Section */}
       <section className="text-gray-700 body-font bg-linear-to-br from-blue-50 to-white">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -255,7 +220,7 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Blog Section */}
+      {/* Promotion Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
 
         <motion.div
@@ -271,29 +236,22 @@ const Home: React.FC = () => {
             experts.
           </h2>
           <div className="flex flex-wrap -m-4 py-8">
-            {[
-              { img: "https://dummyimage.com/720x400", title: "The Catalyzer" },
-              { img: "https://dummyimage.com/721x401", title: "The 400 Blows" },
-              { img: "https://dummyimage.com/722x402", title: "Shooting Stars" },
-            ].map((b, i) => (
-              <div key={i} className="p-4 md:w-1/3">
+            {packages.slice(0, 3).map((b) => (
+              <div key={b.id} className="p-4 md:w-1/3">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
-                    src={b.img}
-                    alt={b.title}
+                    src={`http://localhost:8080/admin/upload_image/website/package/${b.package_Photo}`}
+                    alt={b.package_title}
                   />
                   <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                      CATEGORY
+                      {b.package_name}
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {b.title}
+                      {b.package_title}
                     </h1>
-                    <p className="leading-relaxed mb-3">
-                      Photo booth fam kinfolk cold-pressed sriracha leggings
-                      jianbing microdosing tousled waistcoat.
-                    </p>
+                    <div className="leading-relaxed mb-3" dangerouslySetInnerHTML={{ __html: b.package_details }}></div>
                     <div className="flex items-center flex-wrap">
                       <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                         Learn More
@@ -360,14 +318,21 @@ const Home: React.FC = () => {
           <h1 className="text-3xl font-bold text-center mb-8">
             Medical Specialists
           </h1>
+
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
             ทีมแพทย์ผู้เชี่ยวชาญของเรา พร้อมให้บริการดูแลสุขภาพคุณอย่างเต็มที่
           </h2>
+
           <div className="container mx-auto">
-            <AnimatedTestimonials testimonials={testimonials2} />
+            {doctorTestimonials.length > 0 ? (
+              <AnimatedTestimonials testimonials={doctorTestimonials} />
+            ) : (
+              <p className="text-center text-gray-500">Loading doctors...</p>
+            )}
           </div>
         </motion.div>
       </section>
+
 
       {/* Service Rooms Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
@@ -386,12 +351,13 @@ const Home: React.FC = () => {
             ทั้งในด้านความสะดวกสบายและการดูแลสุขภาพ
           </h2>
           <div className="py-20">
-            <Carousel slides={slideData} />
+            <Carousel slides={roomSlides} />
           </div>
         </motion.div>
       </section>
 
       {/* News and Article Section */}
+
       <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -407,7 +373,11 @@ const Home: React.FC = () => {
             Stay updated with the latest health news, tips, and articles from our
             experts.
           </h2>
-          <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+          <InfiniteMovingCards
+            items={articleCardItems}
+            direction="right"
+            speed="slow"
+          />
         </motion.div>
       </section>
 

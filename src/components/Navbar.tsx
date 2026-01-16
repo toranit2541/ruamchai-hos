@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { IconHome, IconMessage, IconUser, IconSettings } from "@tabler/icons-react";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 
 const navItems = [
     {
@@ -31,11 +31,11 @@ const navItems = [
         <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
     },
-    {
-      name: "Admin",
-      link: "/admin",
-      icon: <IconSettings className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    }
+    // {
+    //   name: "Admin",
+    //   link: "/admin",
+    //   icon: <IconSettings className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    // }
   ];
 
 

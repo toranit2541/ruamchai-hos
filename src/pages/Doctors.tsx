@@ -1,77 +1,102 @@
-import React from "react";
-import { StickyScroll } from "../components/ui/sticky-scroll-reveal";
-import { motion } from "motion/react";
+import React, { useEffect, useState } from "react";
+import { getDoctors } from "../api/api";
 
-const content = [
-  {
-    title: "Collaborative Editing",
-    description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Collaborative Editing
-      </div>
-    ),
-  },
-  {
-    title: "Real time changes",
-    description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center text-white">
-        <img
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Version control",
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        Version control
-      </div>
-    ),
-  },
-  {
-    title: "Running out of content",
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Running out of content
-      </div>
-    ),
-  },
-];
+interface Doctor {
+  id: number;
+  doctor_Photo: string;
+  doctor_titlename: string;
+  doctor_Name: string;
+  doctor_lastname: string;
+  specialty: string;
+}
+
+const IMAGE_BASE_URL =
+  import.meta.env.VITE_API_IMAGE_URL ??
+  "http://localhost:8080/admin/upload_image/website/doctor";
 
 const Doctors: React.FC = () => {
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const data = await getDoctors();
+        setDoctors(data);
+      } catch (err) {
+        console.error("Error fetching doctors:", err);
+        setError("ไม่สามารถโหลดข้อมูลแพทย์ได้");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
+
+  if (loading) {
     return (
-      <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
-        <motion.div
-        initial={{ opacity: 0, y: -80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="z-50 flex flex-col justify-center items-center"
-      >
-        <div className="container px-5 py-24 mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-8 text-gray-600">Medical Specialist</h1>
-          <p className="text-center text-gray-500 mb-12">
-            ค้นหาแพทย์ผู้เชี่ยวชาญตามสาขาและความต้องการของคุณ
-          </p>
-          <div className="w-full py-4 px-5 mx-auto max-w-7xl">
-            <StickyScroll content={content} />
-        </div>
-        </div>
-        </motion.div>
-      </section>
+      <div className="py-20 text-center text-gray-500 animate-pulse">
+        กำลังโหลดข้อมูลแพทย์...
+      </div>
     );
+  }
+
+  if (error) {
+    return (
+      <div className="py-20 text-center text-red-500">
+        {error}
+      </div>
+    );
+  }
+
+  return (
+    <section className="text-gray-600 body-font bg-gradient-to-br from-blue-50 to-white">
+      <div className="container px-5 py-42 mx-auto">
+        <h1 className="text-3xl font-medium text-slate-800 text-center">
+          ทีมแพทย์ผู้เชี่ยวชาญ
+        </h1>
+        <p className="text-slate-500 text-center">Medical Specialist</p>
+
+        <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
+          {doctors.length === 0 && (
+            <p className="text-gray-500">ไม่พบข้อมูลแพทย์</p>
+          )}
+
+          {doctors.map((doctor) => (
+            <div
+              key={doctor.id}
+              className="max-w-80 bg-black text-white rounded-2xl shadow-lg"
+            >
+              <div className="relative -mt-px overflow-hidden rounded-2xl">
+                <img
+                  src={`${IMAGE_BASE_URL}/${doctor.doctor_Photo}`}
+                  alt={`${doctor.doctor_Name} ${doctor.doctor_lastname}`}
+                  onError={(e) => {
+                    e.currentTarget.src = "/images/doctor-placeholder.png";
+                  }}
+                  className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
+                />
+                <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
+              </div>
+
+              <div className="px-4 pb-6 text-center">
+                <p className="mt-4 text-lg font-medium">
+                  {doctor.doctor_titlename} {doctor.doctor_Name}{" "}
+                  {doctor.doctor_lastname}
+                </p>
+
+                <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#9938CA] to-[#E0724A] text-transparent bg-clip-text">
+                  {doctor.specialty}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Doctors;

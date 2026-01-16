@@ -12,7 +12,7 @@ export const ImagesSlider = ({
   autoplay = true,
   direction = "up",
 }: {
-  images: string[];
+  images: { src: string }[];
   children: React.ReactNode;
   overlay?: React.ReactNode;
   overlayClassName?: string;
@@ -38,15 +38,15 @@ export const ImagesSlider = ({
 
   useEffect(() => {
     loadImages();
-  }, []);
+  }, [images]);
 
   const loadImages = () => {
     setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = image;
-        img.onload = () => resolve(image);
+        img.src = image.src;
+        img.onload = () => resolve(image.src);
         img.onerror = reject;
       });
     });
