@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getDoctors } from "../api/api";
 
 interface Doctor {
@@ -65,33 +66,34 @@ const Doctors: React.FC = () => {
           )}
 
           {doctors.map((doctor) => (
-            <div
-              key={doctor.id}
-              className="max-w-80 bg-black text-white rounded-2xl shadow-lg"
-            >
-              <div className="relative -mt-px overflow-hidden rounded-2xl">
-                <img
-                  src={`${IMAGE_BASE_URL}/${doctor.doctor_Photo}`}
-                  alt={`${doctor.doctor_Name} ${doctor.doctor_lastname}`}
-                  onError={(e) => {
-                    e.currentTarget.src = "/images/doctor-placeholder.png";
-                  }}
-                  className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
-                />
-                <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
-              </div>
+            <Link to={`/doctors/${doctor.id}`} key={doctor.id}>
+              <div
+                className="max-w-80 bg-black text-white rounded-2xl shadow-lg"
+              >
+                <div className="relative -mt-px overflow-hidden rounded-2xl">
+                  <img
+                    src={`http://localhost:8080/admin/upload_image/website/doctor/${doctor.doctor_Photo}`}
+                    alt={`${doctor.doctor_Name} ${doctor.doctor_lastname}`}
+                    onError={(e) => {
+                      e.currentTarget.src = "/images/doctor-placeholder.png";
+                    }}
+                    className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
+                  />
+                  <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
+                </div>
 
-              <div className="px-4 pb-6 text-center">
-                <p className="mt-4 text-lg font-medium">
-                  {doctor.doctor_titlename} {doctor.doctor_Name}{" "}
-                  {doctor.doctor_lastname}
-                </p>
+                <div className="px-4 pb-6 text-center">
+                  <p className="mt-4 text-lg font-medium">
+                    {doctor.doctor_titlename} {doctor.doctor_Name}{" "}
+                    {doctor.doctor_lastname}
+                  </p>
 
-                <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#9938CA] to-[#E0724A] text-transparent bg-clip-text">
-                  {doctor.specialty}
-                </p>
+                  <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#9938CA] to-[#E0724A] text-transparent bg-clip-text">
+                    {doctor.specialty}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

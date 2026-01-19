@@ -60,6 +60,7 @@ const Home: React.FC = () => {
   }));
 
   const articleCardItems = articlesdoctors.map((item) => ({
+    id: item.id,
     image: `http://localhost:8080/admin/upload_image/website/blog/${item.article_Photo}`,
     category: item.article_keyword || "Article",
     title: item.article_title,

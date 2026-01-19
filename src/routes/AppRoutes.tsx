@@ -21,9 +21,10 @@ import AdminBlog from "@/pages/Admin/AdminBlog";
 import AdminContact from "@/pages/Admin/AdminContact";
 import AdminClinic from "@/pages/Admin/AdminClinic";
 import AdminNews from "@/pages/Admin/AdminNews";
-import PackageDetail from "@/pages/package_detail";
-import DoctorDetail from "@/pages/doctor_detail";
-import RoomDetail from "@/pages/room_detail";
+import PackageDetail from "@/pages/Package_detail";
+import DoctorDetail from "@/pages/Doctor_detail";
+import BlogDetail from "@/pages/Blog_detail";
+import RoomDetail from "@/pages/Room_detail";
 
 export default function AppRoutes() {
   return (
@@ -35,12 +36,13 @@ export default function AppRoutes() {
       <Route path="/package" element={<Package />} />
       <Route path="/package/:id" element={<PackageDetail />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:id" element={<BlogDetail />} />
       <Route path="/rooms" element={<Rooms />} />
       <Route path="/rooms/:id" element={<RoomDetail />} />
       <Route path="/clinic" element={<Clinic />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/doctors" element={<Doctors />} />
-      <Route path="/doctor/:id" element={<DoctorDetail />} />
+      <Route path="/doctors/:id" element={<DoctorDetail />} />
 
       {/* Login + Signup in ONE page */}
       <Route path="/login" element={<AuthPage />} />

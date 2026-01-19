@@ -55,7 +55,7 @@ const DoctorDetail: React.FC = () => {
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-4 md:px-0 py-10">
                 <div className="size-[520px] rounded-full absolute blur-[300px] -z-10 bg-[#FBFFE1]"></div>
                 <img className="max-w-sm w-full rounded-xl h-auto"
-                    src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?q=80&w=830&h=844&auto=format&fit=crop"
+                    src={`http://localhost:8080/admin/upload_image/website/doctor/${detail.doctor_Photo}`}
                     alt="" />
                 <div>
                     <h1 className="text-3xl font-semibold">{detail.doctor_titlename} {detail.doctor_Name} {detail.doctor_lastname}</h1>

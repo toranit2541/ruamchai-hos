@@ -49,6 +49,12 @@ export const getArticleDoctors = async () => {
   return response.data;
 };
 
+// Get ArticleDoctor by ID
+export const getArticleDoctorById = async (id: string) => {
+  const response = await fetch(`${API_BASE}/articledoctors/${id}`);
+  return response.json();
+};
+
 
 
 

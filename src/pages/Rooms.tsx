@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { getRooms } from "../api/api";
 import { stripHtml } from '@/lib/utils'
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 interface Room {
   room_id: number;
@@ -16,6 +17,7 @@ interface Room {
   room_CreateBy: number;
   room_createDate: string;
 }
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -61,27 +63,31 @@ const Rooms: React.FC = () => {
           ) : (
             <div className="flex flex-wrap justify-center gap-6 py-12">
               {rooms.map((room) => (
-                <motion.div
-                  key={room.room_id}
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <DirectionAwareHover imageUrl={`http://localhost:8080/admin/upload_image/website/room/${room.room_photo}`}>
-                    <div>
-                      <h3 className="text-xs tracking-widest text-gray-200 mb-1">
-                        {room.room_name}
-                      </h3>
-                      <h2 className="text-white text-lg font-semibold">
-                        {stripHtml(room.room_details)}
-                      </h2>
-                      <p className="mt-1 text-gray-200">{room.price}</p>
-                    </div>
-                  </DirectionAwareHover>
-                </motion.div>
+                <Link to={`/rooms/${room.room_id}`} key={room.room_id}>
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <DirectionAwareHover
+                      imageUrl={`http://localhost:8080/admin/upload_image/website/room/${room.room_photo}`}
+                    >
+                      <div>
+                        <h3 className="text-xs tracking-widest text-gray-200 mb-1">
+                          {room.room_name}
+                        </h3>
+                        <h2 className="text-white text-lg font-semibold">
+                          {stripHtml(room.room_details)}
+                        </h2>
+                        <p className="mt-1 text-gray-200">{room.price}</p>
+                      </div>
+                    </DirectionAwareHover>
+                  </motion.div>
+                </Link>
               ))}
+
             </div>
           )}
         </div>
