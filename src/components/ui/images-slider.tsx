@@ -21,7 +21,7 @@ export const ImagesSlider = ({
   direction?: "up" | "down";
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
   const handleNext = () => {
@@ -69,19 +69,22 @@ export const ImagesSlider = ({
 
     window.addEventListener("keydown", handleKeyDown);
 
-    // autoplay
-    let interval: any;
+    let interval: ReturnType<typeof setInterval> | undefined;
+
     if (autoplay) {
       interval = setInterval(() => {
-        handleNext();
+        setCurrentIndex((prevIndex) =>
+          prevIndex + 1 === images.length ? 0 : prevIndex + 1
+        );
       }, 5000);
     }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, images.length]);
+
 
   const slideVariants: Variants = {
     initial: {

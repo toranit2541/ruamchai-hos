@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
 import { Carousel } from "../components/ui/carousel";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
@@ -14,7 +14,7 @@ import { FaHandsHelping, FaHeart, FaUserMd, FaHospitalAlt } from 'react-icons/fa
 import { motion } from 'motion/react';
 import { stripHtml } from '@/lib/utils'
 import imageruamchai from "../assets/ruamchai.webp";
-import { getDoctors, getPackages, getBannerImages, getNews, getRooms, getArticleDoctors } from '../api/api';
+import { getDoctors, getPackages, getBannerImages, getRooms, getArticleDoctors } from '../api/api';
 
 
 
@@ -231,10 +231,9 @@ const Home: React.FC = () => {
           viewport={{ once: true }}
           className="container px-5 py-24 mx-auto"
         >
-          <h1 className="text-3xl font-bold text-center my-12">New Promotions</h1>
+          <h1 className="text-3xl font-bold text-center my-12">โปรโมชั่นพิเศษ</h1>
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-            Stay updated with the latest health news, tips, and articles from our
-            experts.
+            คัดสรรโปรโมชั่นและแพ็คเกจสุขภาพที่ดีที่สุด เพื่อคุณและคนที่คุณรัก
           </h2>
           <div className="flex flex-wrap -m-4 py-8">
             {packages.slice(0, 3).map((b) => (
@@ -368,11 +367,12 @@ const Home: React.FC = () => {
           className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-50 to-white"
         >
           <h1 className="text-3xl font-bold text-center mb-8">
-            News & Articles
+            บทความสุขภาพและข่าวสารล่าสุด
           </h1>
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-            Stay updated with the latest health news, tips, and articles from our
-            experts.
+            ยินดีต้อนรับสู่บล็อกสุขภาพของเรา! ที่นี่ เราแบ่งปันข่าวสารล่าสุด เคล็ดลับด้านสุขภาพ
+            และข้อมูลทางการแพทย์เพื่อช่วยให้คุณได้รับข้อมูลที่ถูกต้องและมีสุขภาพที่ดี
+            สำรวจบทความของเราและอยู่เสมอในกระแสของโลกการแพทย์
           </h2>
           <InfiniteMovingCards
             items={articleCardItems}

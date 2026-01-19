@@ -10,11 +10,6 @@ interface Doctor {
   doctor_lastname: string;
   specialty: string;
 }
-
-const IMAGE_BASE_URL =
-  import.meta.env.VITE_API_IMAGE_URL ??
-  "http://localhost:8080/admin/upload_image/website/doctor";
-
 const Doctors: React.FC = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(true);

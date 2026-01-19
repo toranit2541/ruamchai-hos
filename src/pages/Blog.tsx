@@ -12,10 +12,10 @@ const Blog: React.FC = () => {
       >
             <div className="pt-20 text-center px-5 pb-24 max-w-3xl mx-auto py-24">
                 <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                    Blog
+                    บทความสุขภาพและข่าวสาร
                 </h2>
                 <p className="text-gray-600 max-w-xl mx-auto">
-                    Welcome to our healthcare blog! Here, we share the latest news, health tips, and medical insights to help you stay informed and healthy. Explore our articles and stay updated with the world of healthcare.
+                    ยินดีต้อนรับสู่บล็อกสุขภาพของเรา! ที่นี่ เราแบ่งปันข่าวสารล่าสุด เคล็ดลับด้านสุขภาพ และข้อมูลทางการแพทย์เพื่อช่วยให้คุณได้รับข้อมูลที่ถูกต้องและมีสุขภาพที่ดี สำรวจบทความของเราและอยู่เสมอในกระแสของโลกการแพทย์
                 </p>
             </div>
             </motion.div>

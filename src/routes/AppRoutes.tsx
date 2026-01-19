@@ -11,16 +11,6 @@ import Profile from "../pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import Blog from "../pages/Blog";
 import Doctors from "../pages/Doctors";
-import AdminLayout from "../components/Layout/AdminLayout";
-import { AdminPage } from "../pages/Admin";
-import AdminBanner from "@/pages/Admin/AdminBanner";
-import AdminPackage from "@/pages/Admin/AdminPackage";
-import AdminDoctors from "@/pages/Admin/AdminDoctors";
-import AdminRooms from "@/pages/Admin/AdminRooms";
-import AdminBlog from "@/pages/Admin/AdminBlog";
-import AdminContact from "@/pages/Admin/AdminContact";
-import AdminClinic from "@/pages/Admin/AdminClinic";
-import AdminNews from "@/pages/Admin/AdminNews";
 import PackageDetail from "@/pages/Package_detail";
 import DoctorDetail from "@/pages/Doctor_detail";
 import BlogDetail from "@/pages/Blog_detail";
@@ -56,20 +46,6 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
-      {/* Admin Routes */}
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<AdminPage />} />
-
-        <Route path="banner" element={<AdminBanner />} />
-        <Route path="packages" element={<AdminPackage />} />
-        <Route path="doctors" element={<AdminDoctors />} />
-        <Route path="rooms" element={<AdminRooms />} />
-        <Route path="blog" element={<AdminBlog />} />
-        <Route path="contact" element={<AdminContact />} />
-        <Route path="clinic" element={<AdminClinic />} />
-        <Route path="news" element={<AdminNews />} />
-      </Route>
 
     </Routes>
   );

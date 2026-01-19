@@ -48,9 +48,9 @@ const DoctorDetail: React.FC = () => {
                     font-family: 'Poppins', sans-serif;
                 }
             `}</style>
-            <h1 className="text-3xl font-semibold text-center mx-auto">About our Doctor</h1>
+            <h1 className="text-3xl font-semibold text-center mx-auto">ทีมแพทย์ผู้เชี่ยวชาญของเรา</h1>
             <p className="text-sm text-slate-500 text-center mt-2 max-w-md mx-auto">
-                Our team of experienced and compassionate doctors is dedicated to providing exceptional medical care. With a focus on patient-centered treatment, our doctors combine expertise with empathy to ensure the best outcomes for every individual.
+                Medical Specialist
             </p>
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-4 md:px-0 py-10">
                 <div className="size-[520px] rounded-full absolute blur-[300px] -z-10 bg-[#FBFFE1]"></div>
@@ -64,7 +64,7 @@ const DoctorDetail: React.FC = () => {
                     </p>
 
                     <div className="flex flex-col gap-10 mt-6">
-                        <h3 className="font-semibold">Education</h3>
+                        <h3 className="font-semibold">ประวัติการศึกษา</h3>
 
                         <div
                             className="text-gray-600"
