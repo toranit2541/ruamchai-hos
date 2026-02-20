@@ -21,6 +21,7 @@ import {
   getBannerImages,
   getRooms,
   getArticleDoctors,
+  getNews,
 } from "../api/api";
 
 
@@ -33,6 +34,8 @@ const Home: React.FC = () => {
   const [banners, setBanners] = useState<any[]>([]);
   const [rooms, setRooms] = useState<any[]>([]);
   const [articlesdoctors, setArticlesDoctors] = useState<any[]>([]);
+  const [news, setNews] = useState<any[]>([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +44,8 @@ const Home: React.FC = () => {
       setBanners(await getBannerImages());
       setRooms(await getRooms());
       setArticlesDoctors(await getArticleDoctors());
+      setNews(await getNews());
+      setNews(await getNews());
     };
     fetchData();
   }, []);
@@ -74,6 +79,20 @@ const Home: React.FC = () => {
     views: "1.2K",
     comments: "6",
   }));
+
+  const newsCardItems = news.map((n) => ({
+    id: n.id,
+    image: `https://ruamchai.com/admin/upload_image/website/newsevents/${n.newsevents_Photo}`,
+    category: n.news_event_keyword || "News",
+    title: n.news_event_title,
+    description: stripHtml(n.news_event_details),
+    views: "1.5k",
+    comments: "10",
+  }));
+
+  const combinedItems = [...articleCardItems, ...newsCardItems];
+
+  
 
   return (
     <div>
@@ -136,7 +155,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* INTRO SECTION */}
-      <section className="bg-gradient-to-b from-blue-50 via-white to-blue-50 py-24">
+      <section className="bg-linear-to-b from-blue-50 via-white to-blue-50 py-24">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -312,7 +331,7 @@ const Home: React.FC = () => {
             สำรวจบทความของเราและอยู่เสมอในกระแสของโลกการแพทย์
           </h2>
           <InfiniteMovingCards
-            items={articleCardItems}
+            items={combinedItems}
             direction="right"
             speed="slow"
           />
