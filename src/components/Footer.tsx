@@ -1,17 +1,26 @@
 import React from "react";
 import logoSrc from "../assets/logo55.png";
+import facebookIcon from "../assets/facebook.png";
+import lineIcon from "../assets/line.png";
+import instagramIcon from "../assets/instagram.png";
+import tiktokIcon from "../assets/tiktok.png";
 
 type LinkItem = { label: string; href?: string };
 
-const FooterColumn: React.FC<{ title: string; links: LinkItem[] }> = ({ title, links }) => (
+const FooterColumn: React.FC<{ title: string; links: LinkItem[] }> = ({
+  title,
+  links,
+}) => (
   <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-    <h3 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">{title}</h3>
-    <nav aria-label={title} className="flex flex-col gap-2">
+    <h3 className="text-sm font-semibold text-gray-800 tracking-wide mb-4">
+      {title}
+    </h3>
+    <nav aria-label={title} className="flex flex-col gap-3">
       {links.map((l) => (
         <a
           key={l.label}
-          href={l.href ?? '#'}
-          className="text-gray-600 hover:text-gray-800 transition-colors text-sm"
+          href={l.href ?? "#"}
+          className="text-sm text-gray-600 hover:text-teal-600 transition-colors"
         >
           {l.label}
         </a>
@@ -24,72 +33,96 @@ const SocialIcon: React.FC<{
   href?: string;
   label: string;
   children: React.ReactNode;
-}> = ({ href = '#', label, children }) => (
-  <a href={href} aria-label={label} className="text-gray-500 hover:text-gray-700 transition-colors">
+}> = ({ href = "#", label, children }) => (
+  <a
+    href={href}
+    aria-label={label}
+    className="text-gray-400 hover:text-teal-600 transition-colors"
+  >
     {children}
   </a>
 );
 
 const Footer: React.FC = () => {
   return (
-    <footer className="text-gray-600 body-font bg-gradient-to-br from-blue-50 to-white">
-      <div className="container px-5 py-12 mx-auto flex md:items-start md:flex-row flex-col">
-        <div className="w-64 flex-shrink-0 mx-auto md:mx-0 text-center md:text-left">
-          <a className="flex title-font font-medium items-center justify-center md:justify-start text-gray-900">
-            <img src={logoSrc} alt="Ruamchai logo" className="w-36 h-auto object-contain" />
-          </a>
-          <p className="mt-3 text-sm text-gray-500">เลขที่ 168/26 หมู่4 ถ.บางนา-ตราด กม.29 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560</p>
-          <p className="mt-1 text-sm text-gray-500">โทร : 0-2708-7501-10</p>
+    <footer className="bg-linear-to-b from-blue-50 to-white border-t border-gray-200">
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row gap-12">
+        {/* Logo & Info */}
+        <div className="md:w-1/3 text-center md:text-left">
+          <img
+            src={logoSrc}
+            alt="Ruamchai Pracharug Hospital"
+            className="w-40 mx-auto md:mx-0 mb-4"
+          />
+
+          <p className="text-sm text-gray-600 leading-relaxed">
+            โรงพยาบาลรวมชัยประชารักษ์
+            โรงพยาบาลเอกชนขนาด 100 เตียง
+            ให้บริการทางการแพทย์อย่างครบวงจร
+          </p>
+
+          <p className="mt-4 text-sm text-gray-500">
+            168/26 หมู่ 4 ถ.บางนา–ตราด กม.29
+            ต.บางบ่อ อ.บางบ่อ
+            จ.สมุทรปราการ 10560
+          </p>
+
+          <p className="mt-2 text-sm text-gray-500">
+            โทรศัพท์: 0-2708-7501-10
+          </p>
         </div>
 
-        <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 mt-10 md:mt-0 text-center md:text-left">
+        {/* Links */}
+        <div className="md:w-2/3 flex flex-wrap gap-y-10">
           <FooterColumn
-            title="เกี่ยวกับเรา"
-            links={[{ label: 'ข้อมูลโรงพยาบาล' }, { label: 'ข่าวสารและกิจกรรม' }]}
+            title="เกี่ยวกับโรงพยาบาล"
+            links={[
+              { label: "ข้อมูลโรงพยาบาล", href: "/about" },
+              { label: "ทีมแพทย์", href: "/doctors" },
+            ]}
           />
+
           <FooterColumn
             title="บริการของเรา"
-            links={[{ label: 'ค้นหาแพทย์' }, { label: 'แพ็คเกจและโปรโมชั่น' }, { label: 'สาระน่ารู้' }]}
+            links={[
+              { label: "คลินิกเฉพาะทาง", href: "/clinic" },
+              { label: "แพ็คเกจและโปรโมชั่น", href: "/package" },
+              { label: "ห้องพักพยาบาล", href: "/rooms" },
+            ]}
           />
+
           <FooterColumn
-            title="ติดต่อเรา"
-            links={[{ label: 'ติดต่อเรา' }, { label: 'ร่วมงานกับเรา' }]}
+            title="ติดต่อ"
+            links={[
+              { label: "ติดต่อเรา", href: "/contact" },
+              { label: "ร่วมงานกับเรา", href: "/careers" },
+            ]}
           />
         </div>
       </div>
 
-      <div className="bg-gray-100">
-        <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row items-center">
-          <p className="text-gray-500 text-sm text-center sm:text-left">© 2025 Ruamchai Pracharug —
-            <a href="#" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@Toranit</a>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center gap-4">
+          <p className="text-sm text-gray-500">
+            © 2025 Ruamchai Pracharug Hospital. All rights reserved.
           </p>
 
-          <div className="inline-flex sm:ml-auto sm:mt-0 mt-3 space-x-3">
-            <SocialIcon href="#" label="Facebook">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-              </svg>
+          <div className="sm:ml-auto flex gap-4">
+            <SocialIcon label="Facebook" href="https://www.facebook.com/ruamchaipracharug?mibextid=LQQJ4d">
+              <img src={facebookIcon} alt="Facebook" className="w-7 h-7" />
             </SocialIcon>
 
-            <SocialIcon href="#" label="Twitter">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-              </svg>
+            <SocialIcon label="Line" href="https://line.me/R/ti/p/@104vtkyc?oat_content=url">
+              <img src={lineIcon} alt="Line" className="w-7 h-7" />
             </SocialIcon>
 
-            <SocialIcon href="#" label="Instagram">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                <path d="M17.5 6.5h.01" />
-              </svg>
+            <SocialIcon label="Instagram">
+              <img src={instagramIcon} alt="Instagram" className="w-7 h-7" />
             </SocialIcon>
-
-            <SocialIcon href="#" label="LinkedIn">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
+            <SocialIcon label="TikTok">
+              <img src={tiktokIcon} alt="TikTok" className="w-7 h-7" />
             </SocialIcon>
           </div>
         </div>

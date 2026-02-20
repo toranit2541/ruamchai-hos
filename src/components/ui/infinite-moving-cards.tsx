@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "@/styles/infinite-scroll.css";
 
 export const InfiniteMovingCards = ({
   items,
@@ -87,24 +88,25 @@ export const InfiniteMovingCards = ({
             key={idx}
             className="w-[350px] md:w-[400px] shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-zinc-900 transition-all duration-300 hover:shadow-md"
           >
-            <Link to={`/blog/${item.id}`}>
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-5">
-                <h3 className="text-xs uppercase tracking-widest text-indigo-500 mb-1">
-                  {item.category}
-                </h3>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {item.title}
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                  {item.description}
-                </p>
-                <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                  <div className="text-indigo-500 inline-flex items-center hover:underline">
+
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-5">
+              <h3 className="text-xs uppercase tracking-widest text-teal-600 mb-1">
+                {item.category}
+              </h3>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                {item.title}
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                {item.description}
+              </p>
+              <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                <Link to={`/blog/${item.id}`}>
+                  <div className="text-teal-600 inline-flex items-center hover:underline">
                     Learn More
                     <svg
                       className="w-4 h-4 ml-1"
@@ -118,17 +120,11 @@ export const InfiniteMovingCards = ({
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1">
-                      👁 {item.views ?? "1.2K"}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      💬 {item.comments ?? "6"}
-                    </span>
-                  </div>
-                </div>
+                </Link>
+
               </div>
-            </Link>
+            </div>
+
           </li>
         ))}
       </ul>

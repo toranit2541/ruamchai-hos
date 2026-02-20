@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 
 function Layout() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function Layout() {
         <AppRoutes />
       </main>
       {!isAuthPage && !isAdminPage && <Footer />}
+      <CookieBanner />
     </div>
   );
 }

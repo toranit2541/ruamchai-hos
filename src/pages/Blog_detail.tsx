@@ -39,50 +39,68 @@ const BlogDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-6 py-12">
-      <p className="text-sm text-gray-500 mb-4">
-        <Link to="/" className="hover:text-indigo-500">Home</Link> /
-        <Link to="/blog" className="hover:text-indigo-500"> Blog</Link> /
-        <span className="text-indigo-500"> {detail.article_title}</span>
-      </p>
-
-      <div className="flex flex-col md:flex-row gap-10">
-        <img
-          className="max-w-sm w-full rounded-xl h-auto"
-          src={`http://localhost:8080/admin/upload_image/website/blog/${detail.article_Photo}`}
-          alt=""
-        />
-
-        <div className="text-sm w-full md:w-1/2">
-          <h1 className="text-3xl font-medium text-gray-700">
+    <div className="bg-teal-50 min-h-screen">
+      {/* Hero */}
+      <div className="bg-teal-600 text-white py-24">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm opacity-80 mb-2">บทความ</p>
+          <h1 className="text-3xl md:text-4xl font-semibold">
             {detail.article_title}
           </h1>
+        </div>
+      </div>
 
-          <p className="text-base font-medium mt-6">
-            รายละเอียดบทความ
+      {/* Content */}
+      <div className="container mx-auto px-6 -mt-20 pb-24">
+        <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          <p className="text-sm text-gray-500 mb-4">
+            <Link to="/" className="hover:text-teal-600">
+              Home
+            </Link>{" "}
+            /{" "}
+            <span className="text-teal-600"> {detail.article_title}</span>
           </p>
 
-          <div
-            className="mt-3 text-gray-600"
-            dangerouslySetInnerHTML={{
-              __html: detail.article_details,
-            }}
-          />
+          <div className="flex flex-col md:flex-row gap-10">
+            <img
+              className="max-w-sm w-full rounded-xl h-auto"
+              src={`https://ruamchai.com/admin/upload_image/website/blog/${detail.article_Photo}`}
+              alt=""
+            />
 
-          {detail.article_keyword && (
-            <div className="mt-4 text-sm text-gray-400">
-              Keyword: {detail.article_keyword}
-            </div>
-          )}
+            <div className="text-sm w-full md:w-1/2">
+              <h1 className="text-3xl font-medium text-gray-700">
+                {detail.article_title}
+              </h1>
 
-          {detail.article_createDate && (
-            <div className="mt-2 text-xs text-gray-400">
-              Created: {detail.article_createDate}
+              <p className="text-base font-medium mt-6">
+                รายละเอียดบทความ
+              </p>
+
+              <div
+                className="mt-3 text-gray-600"
+                dangerouslySetInnerHTML={{
+                  __html: detail.article_details,
+                }}
+              />
+
+              {detail.article_keyword && (
+                <div className="mt-4 text-sm text-gray-400">
+                  Keyword: {detail.article_keyword}
+                </div>
+              )}
+
+              {detail.article_createDate && (
+                <div className="mt-2 text-xs text-gray-400">
+                  Created: {detail.article_createDate}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
+    
   );
 };
 

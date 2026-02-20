@@ -1,95 +1,84 @@
-import {
-    IconEye,
-    IconUsers,
-    IconHeart,
-    IconStar,
-    IconActivity,
-    IconPhoto,
-} from "@tabler/icons-react";
-import { motion } from "motion/react";
+import { getClinics } from "@/api/api";
+import { motion } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const content = [
-    {
-        title: "แผนกจักษุ",
-        description: "ดูแลสุขภาพดวงตาแบบครบวงจร",
-        icon: <IconEye size={48} stroke={1.5} className="text-indigo-600" />,
-    },
-    {
-        title: "แผนกกุมารเวชกรรม",
-        description: "ดูแลเด็กและวัยรุ่น",
-        icon: <IconUsers size={48} stroke={1.5} className="text-pink-500" />,
-    },
-    {
-        title: "คลินิกหัวใจ",
-        description: "ตรวจและรักษาโรคหัวใจ",
-        icon: <IconHeart size={48} stroke={1.5} className="text-red-500" />,
-    },
-    {
-        title: "สูติ-นรีเวช",
-        description: "ดูแลคุณแม่และสตรีทุกวัย",
-        icon: <IconStar size={48} stroke={1.5} className="text-yellow-500" />,
-    },
-    {
-        title: "ออร์โธปิดิกส์",
-        description: "รักษากระดูกและข้อ",
-        icon: <IconActivity size={48} stroke={1.5} className="text-green-500" />,
-    },
-    {
-        title: "คลินิกผิวหนัง",
-        description: "การดูแลผิวหนังและความงาม",
-        icon: <IconPhoto size={48} stroke={1.5} className="text-purple-500" />,
-    },
-];
-
+interface Department {
+    id: number;
+    clinic_name: string;
+    clinic_detail: string;
+    clinic_title: string;
+    clinic_createDate: string;
+    clinic_CreateBy: number;
+    clinic_UpdateDate: string;
+    clinic_UpdateBy: number;
+}
 
 export default function DepartmentSection() {
+    const [department, setDepartment] = React.useState<Department[]>([]);
+
+    React.useEffect(() => {
+        const fetchDepartments = async () => {
+            try {
+                const data = await getClinics();
+                setDepartment(data);
+            } catch (error) {
+                console.error("Error fetching departments:", error);
+            }
+        };
+
+        fetchDepartments();
+    }, []);
+
     return (
-        <section className="text-gray-600 body-font bg-linear-to-br from-blue-50 to-white">
-            <motion.div
-        initial={{ opacity: 0, y: -80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="z-50 flex flex-col justify-center items-center"
-      >
-            <div className="container px-5 py-24 mx-auto">
-                <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                    <h1 className="text-3xl font-semibold mb-2 text-gray-900">
+
+        <div className="bg-teal-50 min-h-screen">
+            {/* Hero */}
+            <div className="bg-teal-600 text-white py-24">
+                <div className="container mx-auto px-6 text-center">
+                    <motion.h1
+                        initial={{ opacity: 0, y: -40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-3xl md:text-4xl font-semibold"
+                    >
                         แผนกและศูนย์บริการของโรงพยาบาล
-                    </h1>
-                    <p className="lg:w-1/2 w-full text-gray-500">
+                    </motion.h1>
+                    <p className="mt-4 text-teal-100 max-w-2xl mx-auto">
                         ให้บริการโดยทีมแพทย์ผู้เชี่ยวชาญ พร้อมเครื่องมือและเทคโนโลยีทันสมัย
                     </p>
                 </div>
-
-                <div className="flex flex-wrap -m-4">
-                    {content.map((item, index) => (
-                        <div key={index} className="xl:w-1/3 md:w-1/2 p-4">
-                            <div className="border border-gray-200 p-6 rounded-lg shadow hover:shadow-lg transition">
-
-                                <div className="w-20 h-20 mx-auto flex justify-center items-center mb-6 bg-gray-100 rounded-full">
-                                    {item.icon}
-                                </div>
-
-                                <h2 className="text-lg font-medium title-font text-gray-900 mb-2 text-center">
-                                    {item.title}
-                                </h2>
-
-                                <p className="leading-relaxed text-base text-center">
-                                    {item.description}
-                                </p>
-
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-center py-8">
-                    <button className="flex mx-auto mt-16 text-white bg-indigo-100 px-8 py-4 rounded-lg hover:bg-indigo-200 text-lg font-medium transition">
-                        ดูทั้งหมด
-                    </button>
-                </div>
-
             </div>
-            </motion.div>
-        </section>
+            {/* Content */}
+            <div className="container mx-auto px-6 -mt-20 pb-24">
+                <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {department.map((dept) => (
+                            <motion.div
+                                key={dept.id}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.6 }}
+                                className="group"
+                            >
+                                <Link to={`/clinic/${dept.id}`}>
+                                    <div className="h-full bg-white bg-opacity-75 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                                        <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                                            {dept.clinic_name}
+                                        </h2>
+                                        <p className="leading-relaxed text-base text-gray-600">
+                                            {dept.clinic_detail.length > 100
+                                                ? dept.clinic_detail.substring(0, 100) + "..."
+                                                : dept.clinic_detail}
+                                        </p>
+                                    </div>
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }

@@ -3,14 +3,14 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <section className="text-gray-600 body-font relative bg-linear-to-br from-blue-50 to-white px-5 py-24">
+    <section className="text-teal-800 body-font relative bg-linear-to-br from-teal-50 to-white px-5 py-24">
       <motion.div
         initial={{ opacity: 0, y: -80 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
         className="z-50 flex flex-col justify-center items-center"
       >
-      <h1 className="w-full text-4xl font-bold text-center mb-8 text-gray-600">Contact Us</h1>
+      <h1 className="w-full text-4xl font-bold text-center mb-8 text-teal-600">Contact Us</h1>
       <div className="container px-5 mx-auto flex sm:flex-nowrap flex-wrap py-8 gap-10">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <iframe width="100%" height="100%" className="absolute inset-0" frameBorder="0" title="map" marginHeight={0} marginWidth={0} scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5819993269944!2d100.851584!3d13.5836446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d44856cf1d7ab%3A0xa760c802d2a9a52f!2sRuamchai%20Pracharug%20Hospital!5e0!3m2!1sen!2sth!4v1731400000000!5m2!1sen!2sth" style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}></iframe>
@@ -21,28 +21,28 @@ const Contact: React.FC = () => {
             </div>
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
               <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">อีเมล</h2>
-              <a className="text-indigo-500 leading-relaxed">ruamchai@ruamchai.com</a>
+              <a className="text-teal-600 leading-relaxed">ruamchai@ruamchai.com</a>
               <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">เบอร์โทรศัพท์</h2>
               <p className="leading-relaxed">0-2708-7501-10</p>
             </div>
           </div>
         </div>
-        <div className="lg:w-1/3 md:w-1/2 bg-linear-to-br from-blue-50 to-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 md:px-8">
-          <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">ติดต่อเรา</h2>
+        <div className="lg:w-1/3 md:w-1/2 bg-linear-to-br from-teal-100 to-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 md:px-8">
+          <h2 className="text-teal-600 text-lg mb-1 font-medium title-font">ติดต่อเรา</h2>
           <p className="leading-relaxed mb-5 text-gray-600">หากคุณมีคำถามหรือข้อสงสัยใด ๆ โปรดอย่าลังเลที่จะติดต่อเรา เราพร้อมที่จะช่วยเหลือคุณเสมอ</p>
           <div className="relative mb-4">
             <label htmlFor="name" className="leading-7 text-sm text-gray-600">ชื่อและนามสกุล</label>
-            <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
           </div>
           <div className="relative mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">อีเมล</label>
-            <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
           </div>
           <div className="relative mb-4">
             <label htmlFor="message" className="leading-7 text-sm text-gray-600">ข้อความ</label>
-            <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+            <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
           </div>
-          <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">ส่งข้อความ</button>
+          <button className="text-white bg-teal-600 border-0 py-2 px-6 focus:outline-none hover:bg-teal-700 rounded text-lg">ส่งข้อความ</button>
           <div className="mt-6 pt-6 border-t-2 border-gray-200 text-center ">
             <h2>
               ติดตามเราได้ที่

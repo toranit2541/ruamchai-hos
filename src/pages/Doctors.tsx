@@ -48,51 +48,56 @@ const Doctors: React.FC = () => {
   }
 
   return (
-    <section className="text-gray-600 body-font bg-gradient-to-br from-blue-50 to-white">
-      <div className="container px-5 py-42 mx-auto">
-        <h1 className="text-3xl font-medium text-slate-800 text-center">
-          ทีมแพทย์ผู้เชี่ยวชาญ
-        </h1>
-        <p className="text-slate-500 text-center">Medical Specialist</p>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
-          {doctors.length === 0 && (
-            <p className="text-gray-500">ไม่พบข้อมูลแพทย์</p>
-          )}
-
-          {doctors.map((doctor) => (
-            <Link to={`/doctors/${doctor.id}`} key={doctor.id}>
-              <div
-                className="max-w-80 bg-black text-white rounded-2xl shadow-lg"
-              >
-                <div className="relative -mt-px overflow-hidden rounded-2xl">
-                  <img
-                    src={`http://localhost:8080/admin/upload_image/website/doctor/${doctor.doctor_Photo}`}
-                    alt={`${doctor.doctor_Name} ${doctor.doctor_lastname}`}
-                    onError={(e) => {
-                      e.currentTarget.src = "/images/doctor-placeholder.png";
-                    }}
-                    className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
-                  />
-                  <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
-                </div>
-
-                <div className="px-4 pb-6 text-center">
-                  <p className="mt-4 text-lg font-medium">
-                    {doctor.doctor_titlename} {doctor.doctor_Name}{" "}
-                    {doctor.doctor_lastname}
-                  </p>
-
-                  <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#9938CA] to-[#E0724A] text-transparent bg-clip-text">
-                    {doctor.specialty}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
+    <div className="bg-teal-50 min-h-screen">
+      {/* Hero */}
+      <div className="bg-teal-600 text-white py-24">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-3xl md:text-4xl font-semibold">
+            ทีมแพทย์ผู้เชี่ยวชาญ
+          </h1>
+          <p className="mt-4 text-teal-100 max-w-2xl mx-auto">
+            พบกับทีมแพทย์ผู้เชี่ยวชาญของเราที่พร้อมให้การดูแลสุขภาพคุณด้วยความเอาใจใส่และความชำนาญ
+          </p>
         </div>
       </div>
-    </section>
+
+      {/* Content */}
+      <div className="container mx-auto px-6 -mt-20 pb-24">
+        <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {doctors.map((doctor) => (
+              <Link to={`/doctors/${doctor.id}`} key={doctor.id}>
+                <div className="max-w-80 bg-teal-100 text-teal-900 rounded-2xl shadow-lg">
+                  <div className="relative -mt-px overflow-hidden rounded-2xl">
+                    <img
+                      src={`https://ruamchai.com/admin/upload_image/website/doctor/${doctor.doctor_Photo}`}
+                      alt={`${doctor.doctor_Name} ${doctor.doctor_lastname}`}
+                      onError={(e) => {
+                        e.currentTarget.src = "/images/doctor-placeholder.png";
+                      }}
+                      className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
+                    />
+                    <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-teal-100 to-transparent"></div>
+                  </div>
+
+                  <div className="px-4 pb-6 text-center">
+                    <p className="mt-4 text-lg font-medium">
+                      {doctor.doctor_titlename} {doctor.doctor_Name}{" "}
+                      {doctor.doctor_lastname}
+                    </p>
+
+                    <p className="text-sm font-medium bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-transparent bg-clip-text">
+                      {doctor.specialty}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
