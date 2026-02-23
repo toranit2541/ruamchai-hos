@@ -10,6 +10,7 @@ interface ApiPackage {
     package_title: string;
     package_price: number;
     package_Photo: string;
+    package_type_detail: string;
 }
 
 const fadeInUp = {
@@ -66,12 +67,12 @@ const Package: React.FC = () => {
                                     >
                                         <div className="text-left">
                                             <span className="inline-block mb-2 text-xs font-medium bg-teal-600/80 px-3 py-1 rounded-full text-white">
-                                                โปรแกรมสุขภาพ
+                                                {item.package_type_detail}
                                             </span>
 
-                                            <h3 className="text-white text-lg font-semibold leading-snug">
+                                            {/* <h3 className="text-white text-lg font-semibold leading-snug">
                                                 {item.package_title}
-                                            </h3>
+                                            </h3> */}
 
                                             <p className="mt-1 text-sm text-teal-100">
                                                 {item.package_name}

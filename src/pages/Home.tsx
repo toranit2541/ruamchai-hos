@@ -92,7 +92,7 @@ const Home: React.FC = () => {
 
   const combinedItems = [...articleCardItems, ...newsCardItems];
 
-  
+
 
   return (
     <div>
@@ -217,12 +217,12 @@ const Home: React.FC = () => {
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
             คัดสรรโปรโมชั่นและแพ็คเกจสุขภาพที่ดีที่สุด เพื่อคุณและคนที่คุณรัก
           </h2>
-          <div className="flex flex-wrap -m-4 py-8">
+          <div className="flex flex-wrap -m-4 py-10">
             {packages.slice(0, 3).map((b) => (
               <div key={b.id} className="p-4 md:w-1/3">
                 <div className="h-full border border-teal-100 border-opacity-60 rounded-lg overflow-hidden">
                   <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center"
+                    className="lg:h-120 md:h-120 w-full object-cover object-center"
                     src={`https://ruamchai.com/admin/upload_image/website/package/${b.package_Photo}`}
                     alt={b.package_title}
                   />
@@ -237,7 +237,7 @@ const Home: React.FC = () => {
                     <div className="flex items-center flex-wrap">
                       <Link to={`/package/${b.id}`} className="text-teal-600 inline-flex items-center md:mb-2 lg:mb-0">
                         <a className="text-teal-600 inline-flex items-center md:mb-2 lg:mb-0">
-                          Learn More
+                          ดูรายละเอียด
                           <svg
                             className="w-4 h-4 ml-2"
                             viewBox="0 0 24 24"
@@ -258,6 +258,16 @@ const Home: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <button className="text-white bg-teal-600 border-0 py-2 px-8 focus:outline-none hover:bg-teal-700 rounded text-lg font-medium">
+              <Link
+                to="/package"
+                className="text-white bg-teal-600 border-0 py-2 px-8 focus:outline-none hover:bg-teal-700 rounded text-lg font-medium inline-block"
+              >
+                ดูแพ็คเกจเพิ่มเติม
+              </Link>
+            </button>
           </div>
         </motion.div>
       </section>
@@ -289,7 +299,7 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      
+
 
       {/* Service Rooms Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">

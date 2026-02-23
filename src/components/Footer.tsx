@@ -110,18 +110,19 @@ const Footer: React.FC = () => {
           </p>
 
           <div className="sm:ml-auto flex gap-4">
-            <SocialIcon label="Facebook" href="https://www.facebook.com/ruamchaipracharug?mibextid=LQQJ4d">
+            <SocialIcon label="Facebook" href="https://www.facebook.com/ruamchaipracharug">
               <img src={facebookIcon} alt="Facebook" className="w-7 h-7" />
             </SocialIcon>
 
-            <SocialIcon label="Line" href="https://line.me/R/ti/p/@104vtkyc?oat_content=url">
+            <SocialIcon label="Line" href="https://line.me/ti/p/%40104vtkyc">
               <img src={lineIcon} alt="Line" className="w-7 h-7" />
             </SocialIcon>
 
             <SocialIcon label="Instagram">
               <img src={instagramIcon} alt="Instagram" className="w-7 h-7" />
             </SocialIcon>
-            <SocialIcon label="TikTok">
+            
+            <SocialIcon label="TikTok" href="https://www.tiktok.com/@rch16826">
               <img src={tiktokIcon} alt="TikTok" className="w-7 h-7" />
             </SocialIcon>
           </div>
