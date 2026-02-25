@@ -51,7 +51,7 @@ const Home: React.FC = () => {
   }, []);
 
   const images = banners.map((b) => ({
-    src: `https://ruamchai.com/admin/upload_image/website/baner/${b.baner_Photo}`,
+    src: `https://ruamchai.com/admin/upload_image/website/baner/${b.baner_photo}`,
   }));
 
   const doctorTestimonials = doctors.map((d) => ({
