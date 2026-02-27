@@ -24,7 +24,6 @@ interface ClinicImage {
 
 const ClinicDetail: React.FC = () => {
     const { id } = useParams();
-
     const [detail, setDetail] = useState<ClinicDetail | null>(null);
     const [images, setImages] = useState<ClinicImage[]>([]);
     const [mainImage, setMainImage] = useState<string>("");
@@ -141,7 +140,6 @@ const ClinicDetail: React.FC = () => {
                                 );
                             })}
                         </div>
-
                     </div>
                 </div>
             </div>
