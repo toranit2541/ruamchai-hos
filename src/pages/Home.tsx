@@ -156,6 +156,49 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
+      <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container mx-auto py-16"
+        >
+          <h2 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">คลินิกและศูนย์บริการ</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "คลินิกสุขภาพ",
+                link: "/clinic",
+              },
+              {
+                title: "ศูนย์โรคหัวใจ",
+                link: "/clinic",
+              },
+              {
+                title: "ศูนย์โรคเบาหวาน",
+                link: "/clinic",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-2xl shadow-sm border border-teal-100 p-8 hover:shadow-md transition relative min-h-37.5"
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+                
+                <Link to={item.link} className="absolute bottom-8 right-8 bg-teal-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-teal-600 transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* INTRO SECTION */}
       <section className="bg-linear-to-b from-blue-50 via-white to-blue-50 py-24">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
