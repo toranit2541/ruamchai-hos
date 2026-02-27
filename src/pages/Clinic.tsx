@@ -1,84 +1,139 @@
-import { getClinics } from "@/api/api";
-import { motion } from "framer-motion";
-import React from "react";
-import { Link } from "react-router-dom";
 
-interface Department {
-    id: number;
-    clinic_name: string;
-    clinic_detail: string;
-    clinic_title: string;
-    clinic_createDate: string;
-    clinic_CreateBy: number;
-    clinic_UpdateDate: string;
-    clinic_UpdateBy: number;
-}
+import React from 'react';
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
-export default function DepartmentSection() {
-    const [department, setDepartment] = React.useState<Department[]>([]);
 
-    React.useEffect(() => {
-        const fetchDepartments = async () => {
-            try {
-                const data = await getClinics();
-                setDepartment(data);
-            } catch (error) {
-                console.error("Error fetching departments:", error);
-            }
-        };
 
-        fetchDepartments();
-    }, []);
-
+const Clinic: React.FC = () => {
     return (
-
         <div className="bg-teal-50 min-h-screen">
             {/* Hero */}
             <div className="bg-teal-600 text-white py-24">
                 <div className="container mx-auto px-6 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-3xl md:text-4xl font-semibold"
-                    >
-                        แผนกและศูนย์บริการของโรงพยาบาล
-                    </motion.h1>
+                    <h1 className="text-3xl md:text-4xl font-semibold">
+                        คลินิกสุขภาพ
+                    </h1>
                     <p className="mt-4 text-teal-100 max-w-2xl mx-auto">
-                        ให้บริการโดยทีมแพทย์ผู้เชี่ยวชาญ พร้อมเครื่องมือและเทคโนโลยีทันสมัย
+                        ดูแลสุขภาพของคุณด้วยบริการคลินิกสุขภาพที่ครบครัน
+                        พร้อมทีมแพทย์ผู้เชี่ยวชาญและเทคโนโลยีทันสมัย
                     </p>
                 </div>
             </div>
+
             {/* Content */}
             <div className="container mx-auto px-6 -mt-20 pb-24">
                 <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {department.map((dept) => (
-                            <motion.div
-                                key={dept.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.2 }}
-                                transition={{ duration: 0.6 }}
-                                className="group"
-                            >
-                                <Link to={`/clinic/${dept.id}`}>
-                                    <div className="h-full bg-white bg-opacity-75 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                                        <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                                            {dept.clinic_name}
-                                        </h2>
-                                        <p className="leading-relaxed text-base text-gray-600">
-                                            {dept.clinic_detail.length > 100
-                                                ? dept.clinic_detail.substring(0, 100) + "..."
-                                                : dept.clinic_detail}
-                                        </p>
+                    <TracingBeam className="px-6">
+                        <div className="max-w-2xl mx-auto antialiased pt-4 relative">
+                            {dummyContent.map((item, index) => (
+                                <div key={`content-${index}`} className="mb-10">
+                                    <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
+                                        {item.badge}
+                                    </h2>
+
+                                    <p className="text-xl mb-4">
+                                        {item.title}
+                                    </p>
+
+                                    <div className="text-sm  prose prose-sm dark:prose-invert">
+                                        {item?.image && (
+                                            <img
+                                                src={item.image}
+                                                alt="blog thumbnail"
+                                                height="1000"
+                                                width="1000"
+                                                className="rounded-lg mb-10 object-cover"
+                                            />
+                                        )}
+                                        {item.description}
                                     </div>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </TracingBeam>
                 </div>
             </div>
         </div>
+
     );
-}
+};
+
+const dummyContent = [
+    {
+        title: "Lorem Ipsum Dolor Sit Amet",
+        description: (
+            <>
+                <p>
+                    Sit duis est minim proident non nisi velit non consectetur. Esse
+                    adipisicing laboris consectetur enim ipsum reprehenderit eu deserunt
+                    Lorem ut aliqua anim do. Duis cupidatat qui irure cupidatat incididunt
+                    incididunt enim magna id est qui sunt fugiat. Laboris do duis pariatur
+                    fugiat Lorem aute sit ullamco. Qui deserunt non reprehenderit dolore
+                    nisi velit exercitation Lorem qui do enim culpa. Aliqua eiusmod in
+                    occaecat reprehenderit laborum nostrud fugiat voluptate do Lorem culpa
+                    officia sint labore. Tempor consectetur excepteur ut fugiat veniam
+                    commodo et labore dolore commodo pariatur.
+                </p>
+                <p>
+                    Dolor minim irure ut Lorem proident. Ipsum do pariatur est ad ad
+                    veniam in commodo id reprehenderit adipisicing. Proident duis
+                    exercitation ad quis ex cupidatat cupidatat occaecat adipisicing.
+                </p>
+                <p>
+                    Tempor quis dolor veniam quis dolor. Sit reprehenderit eiusmod
+                    reprehenderit deserunt amet laborum consequat adipisicing officia qui
+                    irure id sint adipisicing. Adipisicing fugiat aliqua nulla nostrud.
+                    Amet culpa officia aliquip deserunt veniam deserunt officia
+                    adipisicing aliquip proident officia sunt.
+                </p>
+            </>
+        ),
+        badge: "React",
+        image:
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        title: "Lorem Ipsum Dolor Sit Amet",
+        description: (
+            <>
+                <p>
+                    Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
+                    deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
+                    non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
+                    sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
+                    velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
+                    commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
+                </p>
+                <p>
+                    In dolore veniam excepteur eu est et sunt velit. Ipsum sint esse
+                    veniam fugiat esse qui sint ad sunt reprehenderit do qui proident
+                    reprehenderit. Laborum exercitation aliqua reprehenderit ea sint
+                    cillum ut mollit.
+                </p>
+            </>
+        ),
+        badge: "Changelog",
+        image:
+            "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        title: "Lorem Ipsum Dolor Sit Amet",
+        description: (
+            <>
+                <p>
+                    Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
+                    deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
+                    non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
+                    sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
+                    velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
+                    commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
+                </p>
+            </>
+        ),
+        badge: "Launch Week",
+        image:
+            "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+];
+
+export default Clinic;

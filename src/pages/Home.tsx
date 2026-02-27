@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import "tailwindcss";
 import {
   FaHandsHelping,
   FaHeart,
   FaUserMd,
   FaHospitalAlt,
 } from "react-icons/fa";
+
 
 import { Carousel } from "../components/ui/carousel";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
@@ -218,8 +220,8 @@ const Home: React.FC = () => {
             คัดสรรโปรโมชั่นและแพ็คเกจสุขภาพที่ดีที่สุด เพื่อคุณและคนที่คุณรัก
           </h2>
           <div className="flex flex-wrap -m-4 py-10">
-            {packages.slice(0, 3).map((b) => (
-              <div key={b.id} className="p-4 md:w-1/3">
+            {packages.slice(0, 12).map((b) => (
+              <div key={b.id} className="p-4 md:w-1/6">
                 <div className="h-full border border-teal-100 border-opacity-60 rounded-lg overflow-hidden">
                   <img
                     className="lg:h-120 md:h-120 w-full object-cover object-center"
@@ -330,7 +332,7 @@ const Home: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
           viewport={{ once: true }}
-          className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-teal-50 to-white"
+          className="h-250 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-teal-50 to-white"
         >
           <h1 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">
             บทความสุขภาพและข่าวสารล่าสุด

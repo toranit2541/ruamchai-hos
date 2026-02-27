@@ -21,14 +21,14 @@
     "cobe": "^0.6.5",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.552.0",
-    "motion": "^12.23.24",
+    "motion": "^12.34.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.5",
     "simplex-noise": "^4.0.3",
     "swiper": "^12.0.3",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -40,7 +40,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.23",
     "baseline-browser-mapping": "^2.9.11",
-    "eslint": "^10.0.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",

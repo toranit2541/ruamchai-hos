@@ -64,11 +64,11 @@ const Doctors: React.FC = () => {
 
       {/* Content */}
       <div className="container mx-auto px-6 -mt-20 pb-24">
-        <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
+        <div className="max-w-8xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {doctors.map((doctor) => (
               <Link to={`/doctors/${doctor.id}`} key={doctor.id}>
-                <div className="max-w-80 bg-teal-100 text-teal-900 rounded-2xl shadow-lg">
+                <div className="max-w-120 h-150 bg-teal-100 text-teal-900 rounded-2xl shadow-lg">
                   <div className="relative -mt-px overflow-hidden rounded-2xl">
                     <img
                       src={`https://ruamchai.com/admin/upload_image/website/doctor/${doctor.doctor_Photo}`}
@@ -76,9 +76,9 @@ const Doctors: React.FC = () => {
                       onError={(e) => {
                         e.currentTarget.src = "/images/doctor-placeholder.png";
                       }}
-                      className="h-[270px] w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
+                      className="h-130 w-full rounded-2xl hover:scale-105 transition-all duration-300 object-cover object-top"
                     />
-                    <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-teal-100 to-transparent"></div>
+                    <div className="absolute bottom-0 z-10 h-60 w-full bg-linear-to-t pointer-events-none from-teal-100 to-transparent"></div>
                   </div>
 
                   <div className="px-4 pb-6 text-center">
@@ -87,7 +87,7 @@ const Doctors: React.FC = () => {
                       {doctor.doctor_lastname}
                     </p>
 
-                    <p className="text-sm font-medium bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-transparent bg-clip-text">
+                    <p className="text-sm font-medium bg-linear-to-r from-teal-500 via-teal-600 to-teal-700 text-transparent bg-clip-text">
                       {doctor.specialty}
                     </p>
                   </div>

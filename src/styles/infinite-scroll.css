@@ -1,6 +1,6 @@
 .scroller {
   --animation-duration: 40s;
-  --animation-direction: forwards;
+  --animation-direction: normal; /* use normal instead of forwards */
 }
 
 .animate-scroll {

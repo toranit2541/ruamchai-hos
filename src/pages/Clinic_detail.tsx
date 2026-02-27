@@ -61,7 +61,7 @@ const ClinicDetail: React.FC = () => {
     }
 
     return (
-        <div className="relative bg-gradient-to-br from-teal-50 via-white to-white">
+        <div className="relative bg-linear-to-br from-teal-50 via-white to-white">
             <div className="container mx-auto px-6 py-32 relative max-w-7xl">
 
                 {/* Breadcrumb */}
@@ -112,7 +112,7 @@ const ClinicDetail: React.FC = () => {
                                 <img
                                     src={mainImage}
                                     alt="Clinic"
-                                    className="w-full h-[320px] object-cover transition-transform duration-500 hover:scale-105"
+                                    className="w-full h-80 object-cover transition-transform duration-500 hover:scale-105"
                                 />
                             )}
                         </div>
