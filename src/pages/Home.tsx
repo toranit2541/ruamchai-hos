@@ -180,45 +180,16 @@ const Home: React.FC = () => {
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
             คัดสรรโปรโมชั่นและแพ็คเกจสุขภาพที่ดีที่สุด เพื่อคุณและคนที่คุณรัก
           </h2>
-          <div className="flex flex-wrap -m-4 py-10">
-            {packages.slice(0, 12).map((b) => (
-              <div key={b.id} className="p-4 md:w-1/6">
-                <div className="h-full border border-teal-100 border-opacity-60 rounded-lg overflow-hidden">
+          <div className="flex flex-wrap -m-4">
+            {packages.slice(0, 10).map((b) => (
+              <div key={b.id} className="p-4 md:w-1/5">
+                <Link to={`/package/${b.id}`} className="h-full border border-teal-100 border-opacity-60 rounded-lg overflow-hidden">
                   <img
                     className="lg:h-120 md:h-120 w-full object-cover object-center"
                     src={`https://ruamchai.com/admin/upload_image/website/package/${b.package_Photo}`}
                     alt={b.package_title}
                   />
-                  <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                      {b.package_name}
-                    </h2>
-                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {b.package_title}
-                    </h1>
-                    <div className="leading-relaxed mb-3" dangerouslySetInnerHTML={{ __html: b.package_details }}></div>
-                    <div className="flex items-center flex-wrap">
-                      <Link to={`/package/${b.id}`} className="text-teal-600 inline-flex items-center md:mb-2 lg:mb-0">
-                        <a className="text-teal-600 inline-flex items-center md:mb-2 lg:mb-0">
-                          ดูรายละเอียด
-                          <svg
-                            className="w-4 h-4 ml-2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M5 12h14" />
-                            <path d="M12 5l7 7-7 7" />
-                          </svg>
-                        </a>
-                      </Link>
-
-                    </div>
-                  </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -265,7 +236,7 @@ const Home: React.FC = () => {
           className="bg-gray-100 py-16 bg-linear-to-br from-teal-50 to-white"
         >
           <h1 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">
-            Medical Specialists
+            ทีมแพทย์ผู้เชี่ยวชาญของเรา
           </h1>
 
           <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
