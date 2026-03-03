@@ -8,7 +8,7 @@ import packageImg from "../assets/reception.webp";
 
 const Services: React.FC = () => {
   return (
-    <section className="bg-gradient-to-b from-teal-50 via-white to-white py-28">
+    <section className="bg-linear-to-b from-teal-50 via-white to-white py-28">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}

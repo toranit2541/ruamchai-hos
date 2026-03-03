@@ -24,6 +24,7 @@ import {
   getRooms,
   getArticleDoctors,
   getNews,
+  getClinics,
 } from "../api/api";
 
 
@@ -37,6 +38,8 @@ const Home: React.FC = () => {
   const [rooms, setRooms] = useState<any[]>([]);
   const [articlesdoctors, setArticlesDoctors] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
+  const [clinics, setClinics] = useState<any[]>([]);
+
 
 
   useEffect(() => {
@@ -48,6 +51,7 @@ const Home: React.FC = () => {
       setArticlesDoctors(await getArticleDoctors());
       setNews(await getNews());
       setNews(await getNews());
+      setClinics(await getClinics());
     };
     fetchData();
   }, []);
@@ -96,6 +100,7 @@ const Home: React.FC = () => {
 
 
 
+
   return (
     <div>
       <ImagesSlider className="h-screen w-full relative z-0" images={images}>
@@ -109,95 +114,6 @@ const Home: React.FC = () => {
         >
         </motion.div>
       </ImagesSlider>
-
-
-      {/* Services Section */}
-      <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
-          className="container mx-auto py-16"
-        >
-          <h2 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">บริการของเรา</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "แพ็กเกจสุขภาพ",
-                desc: "โปรแกรมตรวจสุขภาพและโปรโมชั่นพิเศษ",
-                link: "/package",
-              },
-              {
-                title: "ห้องพักผู้ป่วย",
-                desc: "ห้องพักมาตรฐานโรงพยาบาลเอกชน",
-                link: "/rooms",
-              },
-              {
-                title: "คลินิกเฉพาะทาง",
-                desc: "ดูแลรักษาโดยทีมแพทย์เฉพาะด้าน",
-                link: "/clinic",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl shadow-sm border border-teal-100 p-8 hover:shadow-md transition"
-              >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 mb-6">{item.desc}</p>
-                <Link to={item.link} className="text-teal-600 font-medium hover:underline">
-                  ดูรายละเอียด →
-                </Link>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
-          className="container mx-auto py-16"
-        >
-          <h2 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">คลินิกและศูนย์บริการ</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "คลินิกสุขภาพ",
-                link: "/clinic",
-              },
-              {
-                title: "ศูนย์โรคหัวใจ",
-                link: "/clinic",
-              },
-              {
-                title: "ศูนย์โรคเบาหวาน",
-                link: "/clinic",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl shadow-sm border border-teal-100 p-8 hover:shadow-md transition relative min-h-37.5"
-              >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                
-                <Link to={item.link} className="absolute bottom-8 right-8 bg-teal-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-teal-600 transition">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
 
       {/* INTRO SECTION */}
       <section className="bg-linear-to-b from-blue-50 via-white to-blue-50 py-24">
@@ -247,6 +163,8 @@ const Home: React.FC = () => {
           />
         </div>
       </section>
+
+
 
       {/* Promotion Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
@@ -317,6 +235,26 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
+      <section className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="container px-5 py-24 mx-auto"
+        >
+          <h1 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">คลินิกของเรา</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24 mt-12">
+            {clinics.map((item) => (
+              <Link to={`/clinic/${item.id}`} key={item.id} className="flex flex-col items-center" >
+                <img src={`https://ruamchai.com/admin/upload_image/website/clinic/icons/${item.clinic_icon}`} alt="User Image" className="size-20 aspect-square rounded-full " />
+                <h6 className="text-lg font-medium text-slate-700 text-center mt-2">{item.clinic_name}</h6>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Doctor Section */}
       <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
         <motion.div
@@ -344,6 +282,29 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
+      <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="h-250 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-teal-50 to-white"
+        >
+          <h1 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">
+            บทความสุขภาพและข่าวสารล่าสุด
+          </h1>
+          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
+            ยินดีต้อนรับสู่บล็อกสุขภาพของเรา! ที่นี่ เราแบ่งปันข่าวสารล่าสุด เคล็ดลับด้านสุขภาพ
+            และข้อมูลทางการแพทย์เพื่อช่วยให้คุณได้รับข้อมูลที่ถูกต้องและมีสุขภาพที่ดี
+            สำรวจบทความของเราและอยู่เสมอในกระแสของโลกการแพทย์
+          </h2>
+          <InfiniteMovingCards
+            items={combinedItems}
+            direction="right"
+            speed="slow"
+          />
+        </motion.div>
+      </section>
 
 
       {/* Service Rooms Section */}
@@ -369,29 +330,6 @@ const Home: React.FC = () => {
       </section>
       {/* News and Article Section */}
 
-      <section className="text-gray-600 body-font bg-linear-to-br from-teal-50 to-white">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
-          className="h-250 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden bg-linear-to-br from-teal-50 to-white"
-        >
-          <h1 className="md:text-6xl text-4xl font-bold text-center mb-8 text-teal-500">
-            บทความสุขภาพและข่าวสารล่าสุด
-          </h1>
-          <h2 className="text-center text-gray-600 mb-12 px-4 max-w-2xl mx-auto">
-            ยินดีต้อนรับสู่บล็อกสุขภาพของเรา! ที่นี่ เราแบ่งปันข่าวสารล่าสุด เคล็ดลับด้านสุขภาพ
-            และข้อมูลทางการแพทย์เพื่อช่วยให้คุณได้รับข้อมูลที่ถูกต้องและมีสุขภาพที่ดี
-            สำรวจบทความของเราและอยู่เสมอในกระแสของโลกการแพทย์
-          </h2>
-          <InfiniteMovingCards
-            items={combinedItems}
-            direction="right"
-            speed="slow"
-          />
-        </motion.div>
-      </section>
 
 
       <section className="text-gray-600 body-font relative bg-linear-to-br from-teal-50 to-white">
